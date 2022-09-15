@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="email.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false">
+            <H2>WORKING CONTACT FORM WITH JS</H2>
+            <h3>GET IN TOUCH</h3>
+            <input type="text" id="name" placeholder="YOUR NAME" required>
+            <input type="email" id="email" placeholder="EMAIL ID" required>
+            <input type="phone" id="phone" placeholder="CONTACT NO" required>
+            <textarea id="message" rows="4" placeholder="How Can We Help you?"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "harshanand029@gmail.com",
+                Password: "1E1F2B7D4AFA75E209CFA91E4555DBE226AA",
+                To: 'harsh.20scse1040084@galgotiasuniversity.edu.in',
+                From: document.getElementById("email").value,
+                Subject: "New Contact Form Enquiry",
+                Body: "Name: " + document.getElementById("name").value
+                    + " <br> Email: " + document.getElementById("email").value
+                    + " <br> Phone no: " + document.getElementById("phone").value
+                    + " <br> Message: " + document.getElementById("message").value
+                    + " <br> img" + document.getElementById("imgdiv").value
+            }).then(
+                message =>alert(message)
+            );
+            // .then(function (message) {
+            //     alert("mail sent successfully")
+            // });
+        }
+
+    </script>
+</body>
+
+</html>
